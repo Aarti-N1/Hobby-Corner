@@ -1,0 +1,11 @@
+.profile-img{width: 200px; margin-top: -50px}
+.details-section{padding-top: 15px;}
+.card .event-stats >div{padding: .875rem; text-align: center;}
+.card .event-stats >div .count{font-size: 1.1rem; font-weight: 700;display: block;}
+.card .event-stats >div .description{font-size: 0.875rem; color:grey;}
+.going{width: 25%; float:right}
+.maybe{width:25%;}
+@media (max-width: 575.98px){
+	.count-container{margin-top: -50px;}
+	.going{float:left!important;}
+}
