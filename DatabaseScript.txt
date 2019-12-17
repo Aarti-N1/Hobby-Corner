@@ -1,0 +1,192 @@
+NOTE: 
+**** Users available in DB *****  
+	Username : tim.t@gmail.com
+	Password: Tim@1234
+	Username: jjones@gmail.com
+	Password: Jac@1234
+
+/******************* SCRIPT **********************/
+//drop existing database
+use HobbyCornerDB
+db.dropDatabase()
+
+//creating database
+use HobbyCornerDB
+
+//creating collections
+db.createCollection("users")
+db.createCollection("connections")
+db.createCollection("userconnections")
+db.users.createIndex( { "userId": 1 }, { unique: true } )
+db.connections.createIndex( { "connectionId": 1 }, { unique: true } )
+db.userconnections.createIndex( { userId: 1, connectionId: 1 }, { unique: true } )
+
+//Insert users
+db.users.insertMany([
+	{
+		userId: 'user1',
+		firstName:'Tim',
+		lastName:'T',
+		email:'tim.t@gmail.com',
+		address1:'B6 New Apartments',
+		address2:'Some lane',
+		city:'Charlotte',
+		state:'North Carolina',
+		zip:21322,
+		country:'USA',
+		password:'c454b0ffad6588c162e1f4ef750ed266cda69bc661db159d8586cbf24e9a2e8aaf117066eb110b79a91a0e8b621de1059731c76d9bb839518697721fb0d2ec73',
+		salt:'2bf106d473f1f438'
+	},
+	{
+		userId: 'user2',
+		firstName:'Jacob',
+		lastName:'Jones',
+		email:'jjones@gmail.com',
+		address1:'B3 New Apartments',
+		address2:'Snow lane',
+		city:'Charlotte',
+		state:'North Carolina',
+		zip:21322,
+		country:'USA',
+		password:'0452685b029040a9b4c48a325c1d7ebe6a56527eaca195977cb080a6637857c47841919dcc746da61bad0d999247c31b4e6c960854ab56029f2dcfa3847fcd93',
+		salt:'076771006a48339f'
+	}
+])
+
+//Insert Connections
+db.connections.insertMany([
+	{
+		connectionId:"CON1",
+		connectionName : "Violin lessons near Concord mills",
+		connectionTopic : "Music",
+		details : "I have been playing the violin since the age of 10. I am a professional violinist. I also teach violin. I will be conducting few lessons for beginners with a minimal fee. First few lessons will be free of cost. If you are interested please join us at the provided address.Thank You.",
+		address : "21st Club House,Near Concord Mills,Charlotte, NC - 28212",
+		dateTime : "Mon, 30th September 2019 6pm - 7pm",
+		hostedBy : "John Legend",
+		going : 3,
+		maybe : 2,
+		imageName : "profile.jpg",
+		hostUserId : 'user300'
+	},
+	{
+		connectionId:"CON2",
+		connectionName : "Play for a Fund Raiser concert",
+		connectionTopic : "Music",
+		details : "I am a music lover and am raising funds for a massive Tree Plantation.Please join for meetup at the below mentioned address in if you are interested. Thank You.",
+		address : "Cafe C, Near Concord Mills,Charlotte, NC - 28212", 
+		dateTime : "Fri, 11th October 2019 5pm - 6pm",
+		hostedBy : "Jacob Jones",
+		going : 7,
+		maybe : 3,
+		imageName : "profileM1.jpg",
+		hostUserId : 'user2'	
+	},
+	{
+		connectionId:"CON3",
+		connectionName : "Lets have a Jam Session?",
+		connectionTopic : "Music",
+		details : 	"Planning for a Jam Session sometime next month. Join us if interested. Thank You.", 
+		address : "Tempo Club House,Near Concord Mills,Charlotte, NC - 28212", 
+		dateTime : "Mon, 30th September 2019 6pm - 7pm",
+		hostedBy : "Mary M",
+		going : 4,
+		maybe : 2,
+		imageName : "profileG1.jpg",
+		hostUserId : 'user301'	
+	},
+	{
+		connectionId:"CON4",
+		connectionName :"Marathon trainging for First-Timers",  
+		connectionTopic :"Fitness", 
+		details : "I have been running marathons for years now. It can get really difficult for first timers. If you need some tips on how to train, join us. Thank You.", 
+		address : "21st Club House,Near Concord Mills,Charlotte, NC - 28212", 
+		dateTime : "Fri, 11th October 2019 8pm - 9pm", 
+		hostedBy : "Meera H",
+		going : 4,
+		maybe : 4,
+		imageName : "profileG2.png",
+		hostUserId : 'user302'
+	},
+	{
+		connectionId:"CON5",
+		connectionName : "Hiking the Smokies in Fall", 
+		connectionTopic :"Fitness", 
+		details : "Planning for a hike to the Smokies. If interested join the meeting for more details and discussions. Thank You.", 
+		address : "21st Club House,Near Concord Mills,Charlotte, NC - 28212", 
+		dateTime : "Thu, 3rd October 2019 6pm - 7pm", 
+		hostedBy : "Tim T",
+		going : 7,
+		maybe : 10,
+		imageName : "profileM2.png",
+		hostUserId : 'user1'
+	},
+	{
+		connectionId:"CON6",
+		connectionName : "Weekly Yoga sessions together",
+		connectionTopic :"Fitness",
+		details : "Willing to take weekly Yoga sessions. Please join us for further discussions. Thank You.", 
+		address : "21st Club House,Near Concord Mills,Charlotte, NC - 28212", 
+		dateTime : "Fri, 11th October 2019 5pm - 6pm", 
+		hostedBy : "Anita S",
+		going : 20, 
+		maybe : 13,
+		imageName : "profileG1.jpg",
+		hostUserId : 'user303'
+	},
+	{
+		connectionId:"CON7",
+		connectionName : "Wine and Paint near Charlotte",
+		connectionTopic :"Art",
+		details : "Join us for a Wine and Paint evening. Minimal charges applied.", 
+		address : "21st Club House,Near Concord Mills,Charlotte, NC - 28212", 
+		dateTime : "Mon, 30th September 2019 6pm - 7pm", 
+		hostedBy : "Kelly",
+		going : 4, 
+		maybe : 2,
+		imageName : "profileG2.png",
+		hostUserId : 'user304'
+	},
+	{
+		connectionId:"CON8",
+		connectionName : "Pottery workshop",
+		connectionTopic :"Art",
+		details : "1 day pottery workshop at minimal costs.", 
+		address : "21st Club House,Near Concord Mills,Charlotte, NC - 28212", 
+		dateTime : "Tue, 22th October 2019 5pm - 6pm", 
+		hostedBy : "Tim T",
+		going : 6, 
+		maybe : 9,
+		imageName : "profileM2.png",
+		hostUserId : 'user1'
+	},
+	{
+		connectionId:"CON9",
+		connectionName : "Weekly Yoga sessions together",
+		connectionTopic :"Art",
+		details : "One day workshop to learn stained glass. Interesting Tips and tricks will be shared.", 
+		address : "21st Club House,Near Concord Mills,Charlotte, NC - 28212", 
+		dateTime : "Mon, 30th September 2019 6pm - 7pm", 
+		hostedBy : "Jacob Jones",
+		going : 8, 
+		maybe : 3,
+		imageName : "profileM1.jpg",
+		hostUserId : 'user2'
+	}
+])
+
+
+//Insert Connections for a user in userconnections collection
+db.userconnections.insertMany([
+	{ 
+		userId: 'user1',
+		connectionId:"CON1",
+		rsvp: "yes"
+		
+	},
+	{ 
+		userId: 'user2',
+		connectionId:"CON4",
+		rsvp: "maybe"
+		
+	}
+])
