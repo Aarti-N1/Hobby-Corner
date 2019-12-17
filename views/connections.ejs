@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hobby Corner Connections</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="./../resources/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./../resources/css/common.css">
+		<link rel="stylesheet" href="./../resources/css/connections.css">		
+	</head>
+	<body>
+		<script src="./../resources/scripts/lib/jquery-3.4.1.min.js" ></script>
+    	<script src="./../resources/scripts/lib/popper.min.js"></script>
+    	<script src="./../resources/scripts/lib/bootstrap.min.js" ></script>
+		<div class="page-container">
+    		<div class="content-wrapper">
+    			<% include ./partials/header.ejs %>
+    			<% include ./partials/navigation.ejs %>
+				<div class="main-container">
+					<div class="container-fluid">
+						<% topics.forEach(function(topicName,index){ 
+							if(index%2 != 0){%>
+							<div class="row justify-content-end">
+							<% } else {%>	
+							<div class="row">
+							<% } %>   
+								<div class="col-md-8">
+									<div class="card mb-3 shadow" >
+									  <div class="row no-gutters">
+									    <div class="col-sm-4">
+									      <img src="./../resources/images/<%= topicName %>.jpg" class="card-img" alt="<%= topicName %>"
+									      onerror="javascript:this.src='./../resources/images/default.jpg'">
+									    </div>
+									    <div class="col-sm-8">
+									      <div class="card-body">
+									        <h5 class="card-title"><%= topicName %></h5>
+									        <ul>
+									        	<% (nmap.get(topicName)).forEach(function(item){ %>
+									        		<li><a href="/connections?connectionId=<%=item.connectionId%>" > <%= item.connectionName %></a></li>
+									        	<% }); %>
+											</ul>						        
+									      </div>
+									    </div>
+									  </div>
+									</div>
+								</div>
+							</div>
+						<% }); %>
+					</div>
+				</div>
+				<% include ./partials/footer.ejs %>
+			</div>
+		</div>
+	</body>
+</html>

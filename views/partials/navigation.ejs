@@ -1,0 +1,13 @@
+<div class="navigation">			
+	<a href="/connections">Connections</a>
+	<% if(typeof username != 'undefined'){%>
+		<a class="navLink" href="/manageMyConnections">Manage My Connections</a>
+	<% } %>
+	<span class="login-name-container"> 
+		<% if(typeof username == 'undefined'){%>
+			Welcome
+		<% } else {%>
+			Welcome <%= username %>
+		<% } %>
+	</span>
+</div>

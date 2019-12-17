@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hobby Corner</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="./../resources/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./../resources/css/common.css">
+		<link rel="stylesheet" href="./../resources/css/index.css">		
+	</head>
+	<body>
+		<script src="./../resources/scripts/lib/jquery-3.4.1.min.js" ></script>
+    	<script src="./../resources/scripts/lib/popper.min.js"></script>
+    	<script src="./../resources/scripts/lib/bootstrap.min.js" ></script>
+    	<div class="page-container">
+    		<div class="content-wrapper">
+    			<% include ./partials/header.ejs %>
+    			<% include ./partials/navigation.ejs %>
+				<div class="main-container">
+					<div class="container text-center">
+						<h3>Welcome to Hobby Corner!</h3>
+					</div>
+					<div class="carousel-container container text-center">
+					  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+					    <ol class="carousel-indicators">
+					      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+					      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+					      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+					    </ol>
+					    <div class="carousel-inner">
+					      <div class="carousel-item active">
+					        <img src="./../resources/images/music.jpg" class="d-block w-100" alt="...">
+					        <div class="carousel-caption  d-none d-md-block ">
+					          <h5>Pick up a new hobby.</h5>
+					          <p>It is easier to learn new things when you are enjoying. Take up new hobbies learn from others like you.</p>
+					        </div>
+					      </div>
+					      <div class="carousel-item">
+					        <img src="./../resources/images/trek.jpg" class="d-block w-100" alt="...">
+					        <div class="carousel-caption d-none d-md-block">
+					        	<h5>Make Friends</h5>
+					          <p>Make new friends while enjoying your hobby time.</p>
+					        </div>
+					      </div>
+					      <div class="carousel-item">
+					        <img src="./../resources/images/photography.jpg" class="d-block w-100" alt="...">
+					        <div class="carousel-caption d-none d-md-block">
+					          <h5>Stay active</h5>
+					          <p>Learn about new events, go for treks with a bunch of great people.</p>
+					        </div>
+					      </div>
+					    </div>
+					    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+					      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					      <span class="sr-only">Previous</span>
+					    </a>
+					    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+					      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					      <span class="sr-only">Next</span>
+					    </a>
+					  </div>
+					</div>
+					<div class="description container w-75 text-center">
+						<p> At Hobby Corner you can make new friends while enjoying your hobby time. Gain expertise in your hobby when sharing your experiences. Get to know about events of your interests.</p>
+					</div>
+					<div class="feature-icons text-center">
+						<div class="row">
+				   				<div class="col-sm-4 center-block icons">
+				   					<img src="./../resources/images/piggy_bank.png" alt="piggy bank icon">
+				   					<h3>It's Free!</h3>
+				   					<p>No Registration Fees. No extra costs incurred.</p>
+				    			</div>
+				    			<div class="col-sm-4 center-block icons">
+							    	<img src="./../resources/images/event.jpg" alt="calender event icon">
+				   					<h3>Find Events</h3>
+				   					<p>Find events of interest whether near or far.</p>
+							    </div>
+							    <div class="col-sm-4 center-block icons">
+							    	<img src="./../resources/images/socialize.jpg" alt="group of people socializing">
+				   					<h3>Socialize</h3>
+				   					<p>Find new friends. Create new bonds and conversations.</p>
+				    			</div>								
+						</div>
+					</div>
+				</div>
+				<% include ./partials/footer.ejs %>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,127 @@
+<% 
+var errorMap = (typeof errorMap == 'undefined') ? new Map() : errorMap; 
+var topicInvalidClass = (typeof errorMap != 'undefined' && errorMap.has('topic'))?'err':'';
+var nameInvalidClass = (typeof errorMap != 'undefined' && errorMap.has('name'))?'err':'';
+var detailsInvalidClass = (typeof errorMap != 'undefined' && errorMap.has('details'))?'err':'';
+var addressInvalidClass = (typeof errorMap != 'undefined' && errorMap.has('address'))?'err':'';
+var address2InvalidClass = (typeof errorMap != 'undefined' && errorMap.has('address2'))?'err':'';
+var cityInvalidClass = (typeof errorMap != 'undefined' && errorMap.has('city'))?'err':'';
+var stateInvalidClass = (typeof errorMap != 'undefined' && errorMap.has('state'))?'err':'';
+var zipInvalidClass = (typeof errorMap != 'undefined' && errorMap.has('zip'))?'err':'';
+var datetimepickInvalidClass = (typeof errorMap != 'undefined' && errorMap.has('datetimepick'))?'err':'';
+%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hobby Corner Connection Page</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="./../resources/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./../resources/css/common.css">
+		<link rel="stylesheet" href="./../resources/css/connection.css">
+		<link rel="stylesheet" href="./../resources/scripts/lib/jquery-ui-timepicker-addon.css">
+		<link rel="stylesheet" href="./../resources/scripts/lib/jquery-ui.min.css">
+		<link rel="stylesheet" href="./../resources/css/select2.min.css" />
+	</head>
+	<body>
+		<script src="./../resources/scripts/lib/jquery-3.4.1.min.js" ></script>
+    	<script src="./../resources/scripts/lib/popper.min.js"></script>
+    	<script src="./../resources/scripts/lib/bootstrap.min.js" ></script>
+    	<script src="./../resources/scripts/lib/jquery-ui.min.js" ></script>
+    	<script src="./../resources/scripts/lib/jquery-ui-timepicker-addon.js" ></script>
+    	<script src="./../resources/scripts/lib/newConnectionValidation.js" ></script>
+    	<script src="./../resources/scripts/lib/select2.min.js"></script>
+		<div class="page-container">
+    		<div class="content-wrapper">
+				<% include ./partials/header.ejs %>
+    			<% include ./partials/navigation.ejs %>
+				<div class="main-container">
+					<div class="container">
+						<form id="newConnection-form" method="POST" action="/newConnection" class="needs-validation" novalidate>
+							<div class="form-group row">
+						    	<label for="topic" class="col-sm-2 col-form-label">Topic</label>
+						    	<div class="col-sm-10">
+							    	<select id="topic" name="topic" class="form-control  <%=topicInvalidClass%>">
+									  <% topics.forEach(function(topicName){ %>
+									  <option><%=topicName%></option>
+									  <% }); %>
+									  <!-- <option>white</option>
+									  <option>purple</option> -->
+									</select>
+									<div class="inputValidationError">
+											<%= errorMap.get('topic')%>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="name" class="col-sm-2 col-form-label">Name</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control <%=nameInvalidClass%>" id="name" name="name" placeholder="Name" >
+									<div class="inputValidationError">
+											<%= errorMap.get('name')%>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="details" class="col-sm-2 col-form-label">Details</label>
+								<div class="col-sm-10">
+									<textarea class="form-control <%=detailsInvalidClass%>" id="details" name="details" rows="3"  placeholder="Description" ></textarea>
+									<div class="inputValidationError">
+										<%= errorMap.get('details')%>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="address">Address</label>
+								<input type="text" class="form-control <%=addressInvalidClass%>" id="address" name="address" placeholder="1234 Main St">
+								<div class="inputValidationError">
+									<%= errorMap.get('address')%>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="address2">Address 2</label>
+							 	<input type="text" class="form-control  <%=address2InvalidClass%>" id="address2" name="address2">
+							 	<div class="inputValidationError">
+									<%= errorMap.get('address2')%>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+							    	<label for="city">City</label>
+							    	<input type="text" class="form-control <%=cityInvalidClass%>" id="city" name="city">
+							    	<div class="inputValidationError">
+										<%= errorMap.get('city')%>
+									</div>
+							    </div>
+							    <div class="form-group col-md-4">
+							    	<label for="state">State</label>
+							    	<input type="text" id="state" name="state" class="form-control <%=stateInvalidClass%>">
+							    	<div class="inputValidationError">
+										<%= errorMap.get('state')%>
+									</div>
+							    </div>
+							    <div class="form-group col-md-2">
+							    	<label for="zip">Zip</label>
+							    	<input type="text" class="form-control <%=zipInvalidClass%>" id="zip" name="zip">
+							    	<div class="inputValidationError">
+										<%= errorMap.get('zip')%>
+									</div>
+							    </div>
+							</div>
+							<div class="form-group">
+									<label for="datetimepick">When</label>
+									<input placeholder="Date & Time" id="datetimepick" name="datetimepick" class="form-control <%=datetimepickInvalidClass%>" type="text"/>
+							    	<div class="inputValidationError">
+										<%= errorMap.get('datetimepick')%>
+									</div>
+ 							</div>
+							<button type="submit" class="btn btn-primary shadow">Create Connection</button>
+						</form>
+
+					</div>
+				</div>
+				<% include ./partials/footer.ejs %>
+			</div>
+		</div>
+	</body>
+</html>
